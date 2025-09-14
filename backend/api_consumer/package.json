@@ -1,0 +1,23 @@
+{
+  "name": "mes-api-consumer",
+  "version": "1.0.0",
+  "description": "Node.js script for SAP REST API consumption and publish to internal MQTT",
+  "main": "api_consumer.js",
+  "scripts": {
+    "start": "node api_consumer.js",
+    "dev": "nodemon api_consumer.js"
+  },
+  "dependencies": {
+    "mqtt": "^5.4.1",
+    "axios": "^1.7.2",
+    "mssql": "^10.0.2",
+    "node-cache": "^5.1.2",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "keywords": ["mes", "sap", "mqtt", "api"],
+  "author": "Kilo Code",
+  "license": "MIT"
+}

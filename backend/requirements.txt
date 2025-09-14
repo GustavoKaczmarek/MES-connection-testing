@@ -1,0 +1,6 @@
+# Python Dependencies for Backend Components (External MQTT, Handlers)
+paho-mqtt==1.6.1
+pyodbc==5.1.0  # MS SQL connection (requires ODBC driver)
+pyyaml==6.0.1  # Config parsing
+websockets==12.0  # Secure WebSockets if needed
+pymssql==2.2.11  # Alternative SQL driver

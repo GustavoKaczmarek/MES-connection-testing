@@ -1,0 +1,163 @@
+/* ACME Corporate Colors */
+:root {
+  --gray1: #F5F5F5;
+  --gray2: #DDDDDD;
+  --gray3: #9E9E9E;
+  --gray4: #616161;
+  --gray5: #3C3C3C;
+  --yellow: #FFC510;
+  --green1: #C9E3E0;
+  --green2: #9FCFC9;
+  --green3: #77BCB2;
+  --green4: #52A398;
+  --blue1: #C1D8E7;
+  --blue2: #90BBD8;
+  --blue3: #62ABDA;
+  --blue4: #3982B1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: var(--gray1);
+  color: var(--gray5);
+  line-height: 1.6;
+}
+
+header {
+  background-color: var(--yellow);
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  color: var(--gray5);
+  margin-bottom: 0.5rem;
+}
+
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+h2 {
+  color: var(--gray5);
+  border-bottom: 2px solid var(--yellow);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-left: 4px solid var(--blue3);
+}
+
+.card h3 {
+  color: var(--gray4);
+  margin-bottom: 1rem;
+}
+
+input, select {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid var(--gray2);
+  border-radius: 4px;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.btn-primary {
+  background-color: var(--yellow);
+  color: var(--gray5);
+}
+
+.btn-primary:hover {
+  background-color: #e6b200;
+}
+
+.btn-primary:disabled {
+  background-color: var(--gray3);
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background-color: var(--blue3);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: var(--blue4);
+}
+
+#log-container {
+  background-color: var(--gray1);
+  border: 1px solid var(--gray2);
+  border-radius: 4px;
+  padding: 1rem;
+  max-height: 300px;
+  overflow-y: auto;
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+.log-entry {
+  margin-bottom: 0.5rem;
+  padding: 0.25rem;
+  border-left: 3px solid var(--green3);
+}
+
+.log-entry.error {
+  border-left-color: #ff6b6b;
+}
+
+footer {
+  background-color: var(--gray5);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+#master-data {
+  background-color: var(--green1);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 0.5rem;
+  }
+
+  input, select, button {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}

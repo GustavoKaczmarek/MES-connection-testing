@@ -1,0 +1,25 @@
+# Mosquitto ACL File for MES Internal Broker
+# Access Control for Unified Namespace Topics
+# Format: user <username>
+#        topic [read|write|readwrite] <topic pattern>
+
+user mes_user
+# Full access to UN for testing (restrict in production)
+topic readwrite ACME/China/Pinghu/#
+
+# Specific: Read SAP topics (incoming from API)
+topic read ACME/China/Pinghu/Area1/SAP Workcenters/#
+
+# Write to MES topics (from front-end)
+topic write ACME/China/Pinghu/Area1/WorkCenter1/MES/#
+
+# Internal triggers (read/write for components)
+topic readwrite ACME/China/Pinghu/Area1/Internal/#
+
+# Errors and logs (read for monitoring)
+topic read ACME/China/Pinghu/Area1/Internal/Errors/#
+topic read ACME/China/Pinghu/Area1/MasterData/#
+
+# Deny anonymous or other users (add if needed)
+# user anonymous
+# topic deny #

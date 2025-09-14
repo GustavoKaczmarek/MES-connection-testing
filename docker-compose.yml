@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  # MS SQL Server Database
+  mssql:
+    image: mssql/server:2022-latest
+    container_name: mes_mssql
+    environment:
+      SA_PASSWORD: ${DB_SA_PASSWORD:-YourStrong@Passw0rd}
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: Express
+    ports:
+      - "1433:1433"
+    volumes:
+      - ./data/mssql:/var/opt/mssql
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P $$SA_PASSWORD -Q 'SELECT 1' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Internal MQTT Broker (Mosquitto)
+  mosquitto:
+    image: eclipse-mosquitto:2.0
+    container_name: mes_mosquitto
+    ports:
+      - "1883:1883"  # TCP for Python/Node.js
+      - "9001:9001"  # WebSockets for front-end
+    volumes:
+      - ./config/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - ./config/pwfile:/mosquitto/config/pwfile:ro
+      - ./config/aclfile:/mosquitto/config/aclfile:ro
+      - ./data/mqtt:/mosquitto/data
+      - ./data/mqtt/log:/mosquitto/log
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mosquitto_sub", "-h", "localhost", "-p", "1883", "-t", "healthcheck", "-C", "1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  mssql_data:
+  mqtt_data:
+
+networks:
+  default:
+    name: mes_network

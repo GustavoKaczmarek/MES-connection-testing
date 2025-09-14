@@ -1,0 +1,28 @@
+# Configuration for External MQTT Subscriber
+external_broker:
+  host: ${EXTERNAL_MQTT_HOST:-remote-broker.com}
+  port: ${EXTERNAL_MQTT_PORT:-8883}
+  protocol: ${EXTERNAL_MQTT_PROTOCOL:-wss}
+  username: ${EXTERNAL_MQTT_USERNAME:-placeholder}
+  password: ${EXTERNAL_MQTT_PASSWORD:-placeholder}
+  topics:
+    - "sap/events/material/#"
+    - "sap/events/processorder/#"
+    - "sap/events/replenishment/#"
+
+internal_broker:
+  host: ${INTERNAL_MQTT_HOST:-localhost}
+  port: ${INTERNAL_MQTT_PORT:-1883}
+  username: ${MQTT_USER:-mes_user}
+  password: ${MQTT_PASS:-mes_pass}
+  trigger_topic_base: "ACME/China/Pinghu/Area1/Internal/TriggerAPI/"
+
+db:
+  connection_string: "mssql+pyodbc://${DB_USER:-sa}:${DB_PASSWORD:-YourStrong@Passw0rd}@${DB_SERVER:-localhost}:1433/MESDB?driver=ODBC+Driver+17+for+SQL+Server&trustcert=yes"
+
+sap_api:
+  base_url: ${SAP_BASE_URL:-https://sap-s4hana.example.com/api/v1}
+  oauth:
+    client_id: ${SAP_OAUTH_CLIENT_ID:-placeholder}
+    client_secret: ${SAP_OAUTH_CLIENT_SECRET:-placeholder}
+    token_url: ${SAP_OAUTH_TOKEN_URL:-https://auth.sap.com/oauth/token}

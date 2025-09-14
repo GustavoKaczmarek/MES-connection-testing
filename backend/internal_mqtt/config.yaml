@@ -1,0 +1,21 @@
+# Configuration for Internal MQTT Handlers
+broker:
+  host: ${INTERNAL_MQTT_HOST:-localhost}
+  port: ${INTERNAL_MQTT_PORT:-1883}
+  ws_port: ${INTERNAL_MQTT_WS_PORT:-9001}
+  username: ${MQTT_USER:-mes_user}
+  password: ${MQTT_PASS:-mes_pass}
+
+topics:
+  sap_base: "ACME/China/Pinghu/Area1/SAP Workcenters/"
+  mes_base: "ACME/China/Pinghu/Area1/WorkCenter1/MES/"
+  internal_base: "ACME/China/Pinghu/Area1/Internal/"
+
+db:
+  connection_string: "mssql+pyodbc://${DB_USER:-sa}:${DB_PASSWORD:-YourStrong@Passw0rd}@${DB_SERVER:-localhost}:1433/MESDB?driver=ODBC+Driver+17+for+SQL+Server&trustcert=yes"
+
+# QoS for messages
+qos: 2
+
+# Log level
+log_level: INFO

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MES Simulation Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>MES-SAP Integration Testing Dashboard</h1>
+        <p>Simulate workflows for Process Order Execution and Material Staging</p>
+    </header>
+
+    <main>
+        <section id="process-order">
+            <h2>Process Order Execution</h2>
+            <div class="card">
+                <h3>Start Process Order</h3>
+                <input type="text" id="order-number" placeholder="Order Number (e.g., PO123)">
+                <input type="number" id="quantity" placeholder="Quantity">
+                <select id="material">
+                    <option value="">Select Material</option>
+                </select>
+                <button id="start-order" class="btn-primary">Start Order</button>
+            </div>
+            <div class="card">
+                <h3>Next Step</h3>
+                <button id="next-step" class="btn-secondary">Next Step</button>
+            </div>
+            <div class="card">
+                <h3>Print Label</h3>
+                <input type="text" id="hu-number" placeholder="HU/SSCC Number">
+                <button id="print-label" class="btn-primary">Print Label</button>
+            </div>
+            <div class="card">
+                <h3>Scan Label</h3>
+                <input type="text" id="scan-code" placeholder="Scan SSCC Code">
+                <button id="scan-label" class="btn-primary">Scan</button>
+            </div>
+            <div class="card">
+                <h3>Finish Process Order</h3>
+                <input type="number" id="produced-qty" placeholder="Produced Quantity">
+                <button id="finish-order" class="btn-primary">Finish</button>
+            </div>
+        </section>
+
+        <section id="material-staging">
+            <h2>Material Staging</h2>
+            <div class="card">
+                <h3>Request Replenishment</h3>
+                <input type="text" id="staging-material" placeholder="Material Code">
+                <input type="text" id="storage-loc" placeholder="Storage Location">
+                <input type="number" id="staging-qty" placeholder="Quantity">
+                <button id="request-staging" class="btn-primary">Request</button>
+            </div>
+            <div class="card">
+                <h3>Confirm Delivery</h3>
+                <input type="text" id="request-id" placeholder="Request ID">
+                <button id="confirm-delivery" class="btn-secondary">Confirm</button>
+            </div>
+        </section>
+
+        <section id="logs">
+            <h2>Event Logs</h2>
+            <div id="log-container"></div>
+        </section>
+
+        <section id="master-data">
+            <h2>Master Data</h2>
+            <button id="load-master" class="btn-secondary">Load Master Data</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>Connected to MQTT: <span id="mqtt-status">Disconnected</span></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
